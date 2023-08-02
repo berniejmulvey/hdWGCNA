@@ -17,10 +17,11 @@ ConstructMetaspots <- function(
   # get expression matrix:
   X <- GetAssayData(cur_seurat, slot='counts')
 
+  # IMAGE DATA DOESNT MOVE OVER FROM SPE OBJECTS (and we don't need the image data itself anyhow for the non-visualization functions of hdWGCNA).
   # check to make sure this is just one sample:
-  if(sum(unlist(lapply(Images(cur_seurat), function(x){nrow(cur_seurat@images[[x]]@coordinates) != 0}))) != 1){
-    stop("More than one sample present in grouping. Please specify a metadata column with group.by indicating different ST samples.")
-  }
+  #if(sum(unlist(lapply(Images(cur_seurat), function(x){nrow(cur_seurat@images[[x]]@coordinates) != 0}))) != 1){
+  #  stop("More than one sample present in grouping. Please specify a metadata column with group.by indicating different ST samples.")
+  #}
 
   # boundaries
   row_range <- range(cur_seurat$row)
